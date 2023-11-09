@@ -7,9 +7,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <groupId>api-jmeter-autotest</groupId>
+    <groupId>com.github.season</groupId>
     <artifactId>api-jmeter-autotest</artifactId>
     <version>1.0</version>
+
+    <parent>
+        <groupId>com.github.season</groupId>
+        <artifactId>AutoMeter-API</artifactId>
+        <version>1.0</version>
+    </parent>
+
     <build>
         <resources>
             <resource>
