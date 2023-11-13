@@ -3,12 +3,7 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+docker build -t zb0413/autometer-testcenterapp:1.0 .
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+docker push zb0413/autometer-testcenterapp:1.0
 

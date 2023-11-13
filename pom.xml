@@ -26,4 +26,10 @@
         <module>slaverservice</module>
         <module>testcenterservice</module>
     </modules>
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
 </project>

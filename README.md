@@ -100,5 +100,12 @@
 ## License
 MIT
 
-Copyright (c) 2022-present Season
+# slaverservice
+
+## Build Setup
+
+``` bash
+docker build -t autometer-testcenterservice:1.0 .
+
+docker push autometer-testcenterservice:1.0
     
