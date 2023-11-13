@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  craken-conditionservice:
+    container_name: craken-conditionservice
+    image: zb0413/autometer-conditionservice:1.0
+    # ports:
+    #   - "8083:8083"
+    depends_on:
+      - craken-slaverservice
+    networks:
+      - craken-dev_craken-net
+
+  craken-dispatchservice:
+    container_name: craken-dispatchservice
+    image: zb0413/autometer-dispatchservice:1.0
+    # ports:
+    #   - "8082:8082"
+    depends_on:
+      - craken-conditionservice
+    networks:
+      - craken-dev_craken-net
+
+  craken-mockservice:
+    container_name: craken-mockservice
+    image: zb0413/autometer-mockservice:1.0
+    # ports:
+    #   - "8085:8084"
+    networks:
+      - craken-dev_craken-net
+
+  craken-slaverservice:
+    container_name: craken-slaverservice
+    image: zb0413/autometer-slaverservice:1.0
+    # ports:
+    #   - "8081:8081"
+    volumes:
+      - performancereport:/home/slaverservice/performancereport
+      - performancereportlogfile:/home/slaverservice/performancereportlogfile
+    networks:
+      - craken-dev_craken-net
+
+  craken-testcenterservice:
+    container_name: craken-testcenterservice
+    image: zb0413/autometer-testcenterservice:1.0
+    # ports:
+    #   - "8080:8080"
+    depends_on:
+      - craken-dispatchservice
+    networks:
+      - craken-dev_craken-net
+
+  craken-testcenterapp:
+    container_name: craken-testcenterapp
+    image: zb0413/autometer-testcenterapp:1.0
+    ports:
+      - "8084:80"
+    depends_on:
+      - craken-testcenterservice
+    networks:
+      - craken-dev_craken-net
+
+volumes:
+  performancereport:
+  performancereportlogfile:
+
+networks:
+  craken-dev_craken-net:
+    external: true

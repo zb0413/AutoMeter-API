@@ -8,11 +8,11 @@ spring:
     # 数据源（应该全部加密）
   datasource:
     # 连接，注意各个配置，尤其是要一次性执行多条 SQL 时，要 allowMultiQueries=true
-    url: jdbc:mysql://192.168.3.95:3306/testcenter?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/testcenter?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
     # 用户名 root
-    username: MyEnc({Qjn8FaKnAiApiz6g3RM5Ow==})
+    username: root
     # 密码 123456
-    password: MyEnc({w5CeK9tnNUROTUGdRRmd1Q==})
+    password: root
     # 驱动类
     driver-class-name: com.mysql.jdbc.Driver
   cache:
@@ -27,11 +27,11 @@ spring:
     # Redis数据库索引（默认为0）
     database: 0
     # Redis服务器地址
-    host: 127.0.0.1
+    host: localhost
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
-    #password:
+    password: root
     # 连接池最大连接数（使用负值表示没有限制）
     jedis.pool:
       max-active: 50
@@ -120,10 +120,28 @@ jwt:
   # token 类型
   token-type: Bearer
 
-# 日志
-logging:
-  #  # 以文件方式记录日志
-  level.com.zoctan.api: debug
-  file: conditionservice.log
-  #  # 设置目录
-  path: /opt/conditionservice/log
+---
+#test environment
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://craken-mysql:3306/testcenter?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+
+  redis:
+    host: craken-redis
+    password: root
+
+---
+#production environment
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://craken-mysql:3306/testcenter?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+
+  redis:
+    host: craken-redis
+    password: root
