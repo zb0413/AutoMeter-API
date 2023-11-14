@@ -31,7 +31,6 @@
         <http-request.version>6.0</http-request.version>
         <swagger2.version>2.9.2</swagger2.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <mysql-connector.version>8.0.17</mysql-connector.version>
         <jedis.version>2.10.2</jedis.version>
         <commons-codec.version>1.12</commons-codec.version>
         <commons-lang3.version>3.9</commons-lang3.version>
@@ -66,7 +65,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector.version}</version>
         </dependency>
         <!-- Spring Boot依赖 -->
         <dependency>
