@@ -25,7 +25,7 @@ services:
     container_name: craken-mockservice
     image: zb0413/autometer-mockservice:1.0
     # ports:
-    #   - "8085:8084"
+    #   - "8085:8085"
     networks:
       - craken-dev_craken-net
 
